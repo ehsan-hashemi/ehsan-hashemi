@@ -781,6 +781,7 @@ footer {
 .footer-bottom p {
   color: var(--color-white);
   font-size: var(--font-regular);
+  direction: ltr;
 }
 .footer-social a {
   width: 37px;
@@ -924,8 +925,11 @@ body.darkmode span {
 }
 body.darkmode .navigation-bar .bright,
 body.darkmode .image-main,
-body.darkmode .logo .logo-main {
+body.darkmode .logo .logo-main .logo-main2 {
   display: none;
+}
+.logo-main2 {
+  color: white;
 }
 body.darkmode .navigation-bar .dark,
 body.darkmode .navigation-bar .logo-dark,

@@ -29,8 +29,8 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-            max-width: 350px;
-            width: 85%; /* استفاده از درصد برای انعطاف بیشتر */
+            max-width: 320px; /* عرض مستطیل کوچک‌تر شده */
+            width: 85%; /* انعطاف بیشتر برای موبایل */
         }
         .login-container h1 {
             margin-bottom: 15px;
@@ -39,14 +39,15 @@
             text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
         .input-field {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 15px;
+            width: 95%; /* کوچک‌تر شدن فیلد ورودی */
+            padding: 8px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 8px;
             background-color: rgba(0, 0, 0, 0.3);
             color: #ffffff;
-            font-size: 16px;
+            font-size: 14px; /* کاهش فونت برای تناسب بیشتر */
+            box-sizing: border-box;
         }
         .input-field::placeholder {
             color: rgba(255, 255, 255, 0.7);
@@ -54,16 +55,16 @@
         .input-field:focus {
             outline: none;
             background-color: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 10px #00d4ff;
+            box-shadow: 0 0 8px #00d4ff;
         }
         .login-button {
-            width: 100%;
-            padding: 12px;
+            width: 95%; /* هماهنگی با فیلدهای ورودی */
+            padding: 10px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(to right, #00aaff, #005f99);
             color: #ffffff;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -79,17 +80,17 @@
         }
         @media (max-width: 768px) {
             .login-container {
-                max-width: 300px; /* عرض کمتر برای موبایل */
+                max-width: 280px; /* عرض کمتر برای موبایل */
                 padding: 15px 20px;
             }
             .login-container h1 {
                 font-size: 20px;
             }
             .input-field {
-                font-size: 14px;
+                font-size: 12px; /* تطبیق اندازه فونت برای موبایل */
             }
             .login-button {
-                font-size: 16px;
+                font-size: 14px;
             }
         }
     </style>

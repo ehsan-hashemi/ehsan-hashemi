@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت پاسخ‌ها</title>
+    <style>
+        /* استایل‌دهی صفحه */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مدیریت پاسخ‌های فرم</h1>
+        <p>پاسخ‌های ثبت‌شده در فرم گوگل در جدول زیر نمایش داده می‌شوند.</p>
+        <table id="response-table">
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th>ایمیل</th>
+                    <th>پیام</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- داده‌ها از طریق جاوااسکریپت اضافه می‌شوند -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // اسکریپت برای دریافت داده‌ها از Google Sheets
+        const spreadsheetId = '1aX4p0jHUdCkM-VrshI0KuA-AkmpNv3GTSVRaav2m-gY';
+        const jsonUrl = `https://spreadsheets.google.com/feeds/list/${spreadsheetId}/1/public/values?alt=json`;
+
+        fetch(jsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                const rows = data.feed.entry; // داده‌های پاسخ‌ها
+                const tableBody = document.querySelector('#response-table tbody');
+
+                rows.forEach(row => {
+                    const name = row.gsx$name?.$t || 'نام وارد نشده';
+                    const email = row.gsx$email?.$t || 'ایمیل وارد نشده';
+                    const message = row.gsx$message?.$t || 'پیامی وارد نشده';
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${name}</td>
+                        <td>${email}</td>
+                        <td>${message}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('خطا در دریافت داده‌ها:', error));
+    </script>
+</body>
+</html>

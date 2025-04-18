@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/Vazir.woff2') format('woff2');
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', sans-serif;
+            background-color: #001f3f; /* سرمه‌ای */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #003366; /* سرمه‌ای تیره‌تر */
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 5px #00bfff;
+        }
+        .login-button {
+            background-color: #0074D9;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>ورود</h1>
+        <input type="email" id="email" placeholder="ایمیل" class="input-field">
+        <input type="password" id="password" placeholder="رمز عبور" class="input-field">
+        <button onclick="login()" class="login-button">ورود</button>
+    </div>
+    <script>
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "1392ehsan1392ehsan@gmail.com" && password === "1392ehsan") {
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = "index.html";
+            } else {
+                alert("ایمیل یا رمز عبور اشتباه است!");
+            }
+        }
+    </script>
+</body>
+</html>

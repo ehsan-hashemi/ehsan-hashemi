@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="assets/css/owl.theme.green.css">
 
 </head>
-
+<script>
+    // بررسی وضعیت ورود
+    if (!sessionStorage.getItem('authenticated')) {
+        window.location.href = "login.html"; // هدایت به صفحه ورود
+    }
+    </script>
 <body>
     <!-- Header -->
     <header>

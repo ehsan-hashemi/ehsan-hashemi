@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            direction: rtl; /* راست‌چین کردن محتوا */
         }
 
         .container {
@@ -21,10 +22,6 @@
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        th {
-            direction: center;
         }
 
         h1 {
@@ -60,6 +57,20 @@
 
         table tr:hover {
             background-color: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px; /* کوچک‌تر کردن فونت برای موبایل */
+            }
+
+            table th, table td {
+                padding: 6px;
+            }
+
+            .container {
+                padding: 10px; /* کاهش فاصله‌ها برای موبایل */
+            }
         }
     </style>
 </head>

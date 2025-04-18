@@ -29,8 +29,8 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-            max-width: 400px;
-            width: 90%;
+            max-width: 350px;
+            width: 85%; /* استفاده از درصد برای انعطاف بیشتر */
         }
         .login-container h1 {
             margin-bottom: 15px;
@@ -79,6 +79,7 @@
         }
         @media (max-width: 768px) {
             .login-container {
+                max-width: 300px; /* عرض کمتر برای موبایل */
                 padding: 15px 20px;
             }
             .login-container h1 {
@@ -95,7 +96,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h1>ورود به حساب</h1>
+        <h1>ورود به سایت</h1>
         <input type="email" id="email" placeholder="ایمیل" class="input-field">
         <input type="password" id="password" placeholder="رمز عبور" class="input-field">
         <button onclick="login()" class="login-button">ورود</button>

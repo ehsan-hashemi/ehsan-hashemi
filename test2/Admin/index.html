@@ -66,7 +66,10 @@
         <table id="response-table">
             <thead>
                 <tr>
+                    <th>موضوع</th>
                     <th>نام</th>
+                    <th>نام خانوادگی</th>
+                    <th>شماره تلفن</th>
                     <th>ایمیل</th>
                     <th>پیام</th>
                 </tr>
@@ -88,13 +91,19 @@
                 const tableBody = document.querySelector('#response-table tbody');
 
                 rows.forEach(row => {
+                    const topic = row.gsx$topic?.$t || 'موضوع وارد نشده';
                     const name = row.gsx$name?.$t || 'نام وارد نشده';
+                    const lastname = row.gsx$lastname?.$t || 'نام خانوادگی وارد نشده';
+                    const phone = row.gsx$phone?.$t || 'شماره تلفن وارد نشده';
                     const email = row.gsx$email?.$t || 'ایمیل وارد نشده';
                     const message = row.gsx$message?.$t || 'پیامی وارد نشده';
 
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
+                        <td>${topic}</td>
                         <td>${name}</td>
+                        <td>${lastname}</td>
+                        <td>${phone}</td>
                         <td>${email}</td>
                         <td>${message}</td>
                     `;

@@ -15,9 +15,10 @@
             font-family: 'Vazir', sans-serif;
             background: linear-gradient(to bottom right, #00264d, #004080);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
         }
         .login-container {
@@ -75,20 +76,20 @@
             transform: translateY(2px);
         }
         footer {
-            margin-top: 20px;
+            margin-top: auto;
             font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h1>ورود به حساب</h1>
+        <h1>ورود به سایت</h1>
         <input type="email" id="email" placeholder="ایمیل" class="input-field">
         <input type="password" id="password" placeholder="رمز عبور" class="input-field">
         <button onclick="login()" class="login-button">ورود</button>
     </div>
-    <br>
     <footer>
         ©️ 2025. EhsanHashemi
     </footer>

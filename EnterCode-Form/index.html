@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ثبت سفارش برنامه فروشگاهی Enter Code</title>
+  <style>
+    @font-face {
+        font-family: "Vazir";
+        src: url("/Vazir-Regular.ttf");
+    }
+    body {
+      font-family: "Vazir";
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .form-item {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: "Vazir";
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      font-family: "Vazir";
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+    }
+
+    .error-message {
+      text-align: center;
+      color: red;
+      margin-top: 20px;
+    }
+
+    .footer {
+        background-color: #f2f2f2;
+        color: #333;
+        text-align: center;
+        padding: 1em 0;
+        font-size: 0.9rem;
+        border-top: 1px solid #ddd;
+        direction: rtl;
+    }
+
+    .footer a {
+        color: #0077cc;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>ثبت سفارش برنامه فروشگاهی Enter Code</h2>
+    <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfzU9TMWwYyjtzZCh9qhWwZXIj3wYMITDVSBBX3IxoUNxBsEQ/formResponse" method="POST">
+      <div class="form-item">
+        <label>نام و نام خانوادگی <span style="color: red;">*</span></label>
+        <input type="text" name="entry.1761367759" required>
+      </div>
+
+      <div class="form-item">
+        <label>نام فروشگاه <span style="color: red;">*</span></label>
+        <input type="text" name="entry.874492761" required>
+      </div>
+
+      <div class="form-item">
+        <label>نوع برنامه فروشگاهی <span style="color: red;">*</span></label>
+        <select name="entry.1012182824" required>
+          <option value="با بارکدخوان">با بارکدخوان</option>
+          <option value="بدون بارکدخوان">بدون بارکدخوان</option>
+        </select>
+      </div>
+
+      <div class="form-item">
+        <label>شماره تلفن <span style="color: red;">*</span></label>
+        <input type="tel" name="entry.347510547" required>
+      </div>
+
+      <div class="form-item">
+        <label>ایمیل <span style="color: red;">*</span></label>
+        <input type="email" name="entry.1307749600" required>
+      </div>
+
+      <div class="form-item">
+        <label>توضیحات</label>
+        <textarea name="entry.628237847"></textarea>
+      </div>
+
+      <div class="form-item">
+        <button type="submit" class="btn">ارسال سفارش</button>
+      </div>
+
+      <div id="message"></div>
+    </form>
+  </div>
+
+  <h2>قیمت ها</h2>
+  <h3 style="margin-right: 10px;">با بارکدخوان:</h3>
+  <p style="margin-right: 20px;">با ذخیره سازی دائمی روی سیستم شما: ۲۵۰ هزار تومان - هر ماه ۳۰ هزار تومان</p>
+  <h3 style="margin-right: 10px;">بدون بارکدخوان:</h3>
+  <p style="margin-right: 20px;">با ذخیره سازی دائمی روی سیستم شما: ۲۰۰ هزار توامن - هر ماه ۲۰ هزار تومان</p>
+
+  <footer class="footer">
+        <p style="direction: ltr">
+            &copy; <span id="year">2025</span> Enter Code - All rights reserved.
+            <a href="https://ehsan-hashemi.ir" target="_blank">Ehsan Group</a>
+        </p>
+    </footer>
+
+  <script>
+    const form = document.querySelector('.contact-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        message.innerHTML = '<div class="success-message">✅ سفارش شما با موفقیت ارسال شد! <br> به زودی با شما از طریق ایمیل ارتباط میگیریم...</div>';
+        form.reset();
+      }).catch(() => {
+        message.innerHTML = '<div class="error-message">❌ خطا در ارسال سفارش. لطفاً دوباره تلاش کنید.</div>';
+      });
+    });
+  </script>
+</body>
+</html>

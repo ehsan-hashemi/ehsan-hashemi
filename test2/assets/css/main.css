@@ -333,7 +333,7 @@ header.fixed nav {
   font-weight: var(--font-weight-medium);
 }
 .col-left h1 {
-  font-size: var(--font-xlarge);
+  font-size: 50px;
   line-height: 90px;
   text-transform: capitalize;
   font-weight: var(--font-weight-bold);

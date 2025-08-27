@@ -1,0 +1,165 @@
+@font-face {
+    font-family: "Vazir";
+    src: url(/fonts/Vazir-Regular.ttf);
+}
+
+body {
+    font-family: "Vazir", sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-img {
+    width: 60px;
+    border-radius: 10px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    gap: 15px;
+}
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: gold;
+}
+
+/* Language Switch */
+.lang-switch {
+    display: flex;
+    gap: 5px;
+}
+.lang-switch button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 8px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+.lang-switch button:hover {
+    background: gold;
+    color: black;
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+h2 {
+    border-bottom: 2px solid gold;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.image-box {
+    margin-top: 15px;
+}
+.image-box img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+.image-box img:hover {
+    transform: scale(1.05);
+}
+
+/* Social Icons */
+.social-media a img {
+    width: 36px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+.social-media a img:hover {
+    transform: scale(1.2);
+}
+
+/* Footer */
+footer {
+    background: black;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+footer a {
+    color: gold;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+    /* همبرگری */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 26px;
+        cursor: pointer;
+    }
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 10px 0;
+    }
+    nav.show {
+        display: flex;
+    }
+    nav a {
+        margin: 10px 0;
+    }
+    .logo-img {
+        width: 50px;
+    }
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+/* دسکتاپ: دکمه همبرگری مخفی */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}

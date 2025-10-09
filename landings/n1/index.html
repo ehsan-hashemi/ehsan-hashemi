@@ -1,0 +1,206 @@
+<!--
+Files:
+- index.html
+- styles.css
+- scripts.js
+- works.json
+- assets/ (images: work1.jpg, work2.jpg, work3.jpg)
+
+How to run:
+- Place all files in a single folder.
+- Open index.html directly in a modern browser (Chrome, Firefox, Edge, Safari).
+- No build system or backend required. Works on GitHub Pages.
+-->
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>خانه مذهبی - نمونه‌کارها و ثبت سفارش</title>
+  <meta name="description" content="سایت مینیمال و حرفه‌ای برای مشاهده نمونه‌کارها و ثبت سفارش. ترجمه فارسی/انگلیسی/عربی، حالت تاریک/روشن، دسترس‌پذیر و واکنش‌گرا.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts (Vazirmatn for Persian), plus Inter for Latin -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Remix Icon (lightweight icon set) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Translate element (website translator) -->
+  <meta name="google" content="notranslate">
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fa',
+        includedLanguages: 'fa,en,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#portfolio">پرش به نمونه‌کارها</a>
+
+  <!-- Header (Sticky) -->
+  <header class="site-header" role="banner">
+    <div class="logo" aria-label="لوگو سایت">
+      <i class="ri-layout-grid-fill" aria-hidden="true"></i>
+      <span class="brand">خانه مذهبی</span>
+    </div>
+
+    <nav class="header-actions" aria-label="تنظیمات و زبان">
+      <div class="lang-switch" aria-label="سوییچر زبان">
+        <!-- Hidden Google widget container -->
+        <div id="google_translate_element" class="visually-hidden" aria-hidden="true"></div>
+
+        <!-- Visible language buttons -->
+        <button class="btn ghost" data-lang="fa" aria-label="تغییر زبان به فارسی">FA</button>
+        <button class="btn ghost" data-lang="en" aria-label="Change language to English">EN</button>
+        <button class="btn ghost" data-lang="ar" aria-label="تغيير اللغة إلى العربية">AR</button>
+      </div>
+
+      <button class="btn toggle-theme" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+        <i class="ri-sun-line theme-icon light" aria-hidden="true"></i>
+        <i class="ri-moon-line theme-icon dark" aria-hidden="true"></i>
+        <span class="toggle-label">روشن/تاریک</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero / Intro -->
+  <section class="hero" aria-label="معرفی">
+    <div class="hero-inner">
+      <h1 class="headline">طراحی مدرن، مینیمال و واکنش‌گرا</h1>
+      <p class="subhead">نمونه‌کارها را ببینید، و اگر آماده‌اید، سفارش خود را ثبت کنید. همه‌چیز سریع، امن و زیبا.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn primary" aria-label="مشاهده نمونه‌کارها">مشاهده نمونه‌کارها</a>
+        <a href="#order" class="btn" aria-label="ثبت سفارش">ثبت سفارش</a>
+      </div>
+    </div>
+    <div class="bg-aurora" aria-hidden="true"></div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <main id="portfolio" class="portfolio" role="main" aria-label="نمونه‌کارها">
+    <div class="section-head">
+      <h2>نمونه‌کارها</h2>
+      <div class="section-tools">
+        <div class="count" aria-live="polite"><span id="worksCount">0</span> مورد</div>
+        <div class="sort-controls" aria-label="مرتب‌سازی">
+          <label for="sortSelect" class="sort-label">مرتب‌سازی:</label>
+          <select id="sortSelect" class="select">
+            <option value="id-desc" selected>بر اساس شناسه (نزولی)</option>
+            <option value="id-asc">بر اساس شناسه (صعودی)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="worksGrid" class="grid" aria-live="polite">
+      <!-- Cards will be injected here by scripts.js -->
+    </div>
+  </main>
+
+  <!-- Lightbox / Modal for portfolio -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close="true"></div>
+    <div class="lightbox-content" role="document">
+      <button class="lightbox-close" aria-label="بستن" data-close="true">
+        <i class="ri-close-line" aria-hidden="true"></i>
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightboxImage" alt="" loading="lazy">
+        <figcaption id="lightboxTitle"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Order Form Section -->
+  <section id="order" class="order" aria-label="فرم ثبت سفارش">
+    <div class="section-head">
+      <h2>ثبت سفارش</h2>
+      <p class="muted">اطلاعات را با دقت وارد کنید. فیلدهای دارای ستاره قرمز الزامی هستند.</p>
+    </div>
+
+    <form id="orderForm" novalidate aria-describedby="orderHelp">
+      <div class="form-row">
+        <label for="fullName">
+          نام و نام خانوادگی <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input id="fullName" name="entry.1779351425" type="text" required
+               placeholder="مثال: احسان رضایی" aria-required="true" autocomplete="name">
+      </div>
+
+      <div class="form-row">
+        <label for="phone">
+          شماره تلفن <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input id="phone" name="entry.612053626" type="tel" required
+               placeholder="مثال: 0912XXXXXXX" aria-required="true" autocomplete="tel">
+      </div>
+
+      <div class="form-row">
+        <label for="title">
+          عنوان سفارش
+        </label>
+        <input id="title" name="entry.420437738" type="text" placeholder="مثال: طراحی سایت شرکتی">
+      </div>
+
+      <div class="form-row">
+        <label for="description">
+          توضیحات سفارش <span class="required" aria-hidden="true">*</span>
+        </label>
+        <textarea id="description" name="entry.946057571" rows="4" required
+                  placeholder="جزئیات سفارش را شرح دهید..." aria-required="true"></textarea>
+      </div>
+
+      <div id="orderHelp" class="help">
+        فیلدهای دارای ستاره قرمز الزامی هستند. در صورت خطای ارسال، فرم اصلی گوگل در تب جدید باز می‌شود.
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary" aria-label="ارسال سفارش">
+          <i class="ri-send-plane-line" aria-hidden="true"></i>
+          ارسال
+        </button>
+        <button type="reset" class="btn ghost" aria-label="پاکسازی فرم">پاکسازی</button>
+      </div>
+
+      <!-- Status messages -->
+      <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+    </form>
+
+    <!-- Hidden HTML fallback form for Google Forms (CORS-safe redirect) -->
+    <form id="fallbackForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScOy0P6NRXcB6q8Ud-FlJVmTqcwbDidilgq282BEVxA4WAyXQ/formResponse"
+          method="POST" target="_blank" class="visually-hidden" aria-hidden="true">
+      <input type="hidden" name="entry.1779351425" id="ff_fullName">
+      <input type="hidden" name="entry.612053626" id="ff_phone">
+      <input type="hidden" name="entry.420437738" id="ff_title">
+      <input type="hidden" name="entry.946057571" id="ff_description">
+    </form>
+
+    <div class="backup-link">
+      <a class="btn link" id="openGoogleForm" href="https://docs.google.com/forms/d/e/1FAIpQLScOy0P6NRXcB6q8Ud-FlJVmTqcwbDidilgq282BEVxA4WAyXQ/viewform?usp=pp_url"
+         target="_blank" rel="noopener noreferrer">باز کردن فرم اصلی گوگل (در صورت نیاز)</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    © 2025. Khaneh Mazzehabi. <a href="https://ehsanpg.ir" target="_blank" rel="noopener noreferrer">Ehsan Group</a>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>

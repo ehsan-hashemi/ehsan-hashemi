@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خانه مذهبی | نمونه‌کارها و سفارش</title>
+  <meta name="description" content="نمونه‌کارهای طراحی حرفه‌ای و ثبت سفارش آنلاین. طراحی وب‌سایت، لوگو و اپلیکیشن موبایل.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+
+  <header class="sticky-header">
+    <div class="container header-container">
+      <div class="logo">
+        <i class="bi bi-gem"></i>
+        <h1>خانه مذهبی</h1>
+      </div>
+      <nav class="controls">
+        <div class="language-switcher">
+          <a href="#" class="lang-btn" data-lang="fa" title="فارسی">FA</a>
+          <a href="#" class="lang-btn" data-lang="en" title="English">EN</a>
+          <a href="#" class="lang-btn" data-lang="ar" title="العربية">AR</a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-moon-stars-fill"></i>
+          <i class="bi bi-sun-fill"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="portfolio" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title" class="section-title">نمونه‌کارها</h2>
+      <div id="portfolio-grid" class="portfolio-grid">
+        </div>
+    </section>
+
+    <section id="order-form-section" aria-labelledby="form-title">
+        <h2 id="form-title" class="section-title">ثبت سفارش</h2>
+        <form id="order-form" novalidate>
+            <div class="form-group">
+                <label for="full-name">نام و نام خانوادگی <span class="required">*</span></label>
+                <input type="text" id="full-name" name="entry.1779351425" required placeholder="مثال: علی محمدی">
+            </div>
+            <div class="form-group">
+                <label for="phone-number">شماره تلفن <span class="required">*</span></label>
+                <input type="tel" id="phone-number" name="entry.612053626" required placeholder="مثال: 09123456789">
+            </div>
+            <div class="form-group">
+                <label for="order-title">عنوان سفارش</label>
+                <input type="text" id="order-title" name="entry.420437738" placeholder="مثال: طراحی لوگو برای شرکت">
+            </div>
+            <div class="form-group">
+                <label for="order-description">توضیحات سفارش <span class="required">*</span></label>
+                <textarea id="order-description" name="entry.946057571" rows="5" required placeholder="جزئیات کامل سفارش خود را بنویسید..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">ارسال سفارش</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025. Khaneh Mazzehabi. <a href="https://ehsanpg.ir" target="_blank" rel="noopener noreferrer">Ehsan Group</a></p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" style="display: none;">
+    <div class="lightbox-overlay" tabindex="-1"></div>
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Close image view">&times;</button>
+      <img id="lightbox-image" src="" alt="">
+      <h3 id="lightbox-title"></h3>
+    </div>
+  </div>
+
+  <div id="google_translate_element" style="display: none;"></div>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { window.handleFormSuccess(); }"></iframe>
+</body>
+</html>

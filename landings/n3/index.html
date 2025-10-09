@@ -1,0 +1,169 @@
+<!--
+Files produced:
+- index.html
+- styles.css
+- scripts.js
+- works.json
+- assets/ (put sample images: work1.jpg, work2.jpg, work3.jpg, logo.svg)
+
+How to run:
+1) Put all files in one folder (keep assets/ subfolder).
+2) Open index.html in your browser.
+   - For full fetch support / GitHub Pages, upload to a static server (recommended).
+-->
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="نمونه‌کارها و فرم سفارش — Khaneh Mazzehabi" />
+  <title>Khaneh Mazzehabi — نمونه‌کارها</title>
+
+  <!-- Google Fonts: Vazirmatn (فارسی) + Roboto (برای انگلیسی) -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Small inline styles to avoid flash before theme applied -->
+  <style>
+    :root { transition: color 0.2s, background 0.2s; }
+    html[data-theme="dark"] { background: #0b0f14; color: #e6eef8; }
+  </style>
+
+</head>
+<body>
+
+  <!-- Sticky header -->
+  <header class="site-header" role="banner" aria-label="هدر سایت">
+    <div class="container header-inner">
+      <!-- Right side: logo -->
+      <div class="logo" id="site-logo">
+        <!-- simple inline logo svg -->
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4facfe"/><stop offset="1" stop-color="#00f2fe"/></linearGradient></defs>
+          <rect rx="6" width="24" height="24" fill="url(#g1)"></rect>
+          <path d="M6 12c0-3.3 2.7-6 6-6v6h6c0 3.3-2.7 6-6 6s-6-2.7-6-6z" fill="#fff" opacity="0.9"></path>
+        </svg>
+        <span class="site-title">Khaneh Mazzehabi</span>
+      </div>
+
+      <!-- Left side: language + theme -->
+      <div class="controls" role="navigation" aria-label="ابزارها">
+        <div class="lang-switcher" aria-label="تغییر زبان">
+          <button class="lang-btn" data-lang="fa" aria-pressed="true" title="فارسی">فارسی</button>
+          <button class="lang-btn" data-lang="en" title="English">English</button>
+          <button class="lang-btn" data-lang="ar" title="العربية">العربية</button>
+        </div>
+
+        <div class="theme-toggle" aria-label="تم">
+          <button id="theme-toggle-btn" aria-pressed="false" title="تاریک / روشن">🌙</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hidden Google Translate element (widget initialized by scripts.js) -->
+  <div id="google_translate_element" style="display:none"></div>
+
+  <main id="main" class="container" role="main">
+
+    <!-- Portfolio section -->
+    <section id="portfolio" aria-labelledby="portfolio-heading">
+      <div class="section-head">
+        <h1 id="portfolio-heading">نمونه‌کارها</h1>
+        <div class="portfolio-meta">
+          <span id="works-count" aria-live="polite">0</span>
+        </div>
+      </div>
+
+      <div id="works-grid" class="works-grid" role="list" aria-label="لیست نمونه‌کارها">
+        <!-- کارت‌ها توسط scripts.js ساخته می‌شوند -->
+      </div>
+    </section>
+
+    <!-- Order form section (قبل از فوتر) -->
+    <section id="order" aria-labelledby="order-heading">
+      <h2 id="order-heading">ثبت سفارش</h2>
+      <p>برای ثبت سفارش فرم زیر را تکمیل کنید. (همچنین می‌توانید فرم اصلی گوگل را باز کنید.)</p>
+
+      <form id="order-form" class="order-form" novalidate>
+        <div class="form-row">
+          <label for="name">نام و نام خانوادگی <span class="req">*</span></label>
+          <input id="name" name="entry.1779351425" type="text" required aria-required="true" placeholder="مثال: علی رضایی">
+        </div>
+
+        <div class="form-row">
+          <label for="phone">شماره تلفن <span class="req">*</span></label>
+          <input id="phone" name="entry.612053626" type="tel" required aria-required="true" placeholder="+98 912 123 4567" pattern="^[0-9+\-\s()]{7,25}$">
+        </div>
+
+        <div class="form-row">
+          <label for="title">عنوان سفارش</label>
+          <input id="title" name="entry.420437738" type="text" placeholder="مثلاً طراحی لوگو">
+        </div>
+
+        <div class="form-row">
+          <label for="details">توضیحات سفارش <span class="req">*</span></label>
+          <textarea id="details" name="entry.946057571" rows="5" required aria-required="true" placeholder="توضیحات کامل سفارش..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit-btn" class="btn-primary">ارسال سفارش</button>
+          <a id="open-google-form" class="btn-link" target="_blank" rel="noopener noreferrer"
+             href="https://docs.google.com/forms/d/e/1FAIpQLScOy0P6NRXcB6q8Ud-FlJVmTqcwbDidilgq282BEVxA4WAyXQ/viewform?usp=pp_url">
+            باز کردن فرم اصلی گوگل
+          </a>
+        </div>
+
+        <div id="form-status" role="status" aria-live="polite" class="form-status" hidden></div>
+      </form>
+
+      <!-- Hidden fallback form for Google Forms submission (populated + submitted by JS if needed) -->
+      <form id="gf-hidden-form" action="https://docs.google.com/forms/d/e/1FAIpQLScOy0P6NRXcB6q8Ud-FlJVmTqcwbDidilgq282BEVxA4WAyXQ/formResponse" method="POST" target="_blank" style="display:none" aria-hidden="true">
+        <input name="entry.1779351425" type="text" />
+        <input name="entry.612053626" type="text" />
+        <input name="entry.420437738" type="text" />
+        <textarea name="entry.946057571"></textarea>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lb-overlay" data-close="true" tabindex="-1"></div>
+    <div class="lb-content" role="document" tabindex="0">
+      <button class="lb-close" aria-label="بستن (Esc)" title="بستن">✕</button>
+      <h3 class="lb-title"></h3>
+      <div class="lb-image-wrap">
+        <img src="" alt="" class="lb-image" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025. Khaneh Mazzehabi. <a href="https://ehsanpg.ir" target="_blank" rel="noopener noreferrer">Ehsan Group</a></p>
+    </div>
+  </footer>
+
+  <!-- Inline fallback data (used if fetch('works.json') blocked by file://) -->
+  <script id="works-fallback" type="application/json">
+[
+  { "id": 3, "title": "وب‌سایت شرکتی", "image": "assets/work3.jpg" },
+  { "id": 2, "title": "لوگو برند X", "image": "assets/work2.jpg" },
+  { "id": 1, "title": "طراحی اپ موبایل", "image": "assets/work1.jpg" }
+]
+  </script>
+
+  <!-- Main script -->
+  <script src="scripts.js" defer></script>
+
+  <!-- Google Translate widget (loaded after our scripts so our init function is available) -->
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
+</body>
+</html>

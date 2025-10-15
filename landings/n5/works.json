@@ -1,0 +1,17 @@
+[
+  {
+    "id": 3,
+    "title": "وب‌سایت شرکتی مدرن",
+    "image": "assets/work3.jpg"
+  },
+  {
+    "id": 2,
+    "title": "طراحی هویت بصری برند X",
+    "image": "assets/work2.jpg"
+  },
+  {
+    "id": 1,
+    "title": "اپلیکیشن موبایل فروشگاهی",
+    "image": "assets/work1.jpg"
+  }
+]
